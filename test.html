@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carte Interactive avec Leaflet</title>
+  <!-- Inclure les bibliothèques Leaflet et PapaParse -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+</head>
+<body>
+
+<!-- Créer une div pour afficher la carte -->
+<div id="map" style="height: 500px;"></div>
+
+<script>
+  // Initialiser la carte Leaflet
+  var mymap = L.map('map').setView([0, 0], 2);
+
+  // Ajouter une couche de tuiles OpenStreetMap à la carte
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(mymap);
+
+  // Charger le fichier CSV et ajouter des marqueurs à la carte
+  Papa.parse('csv-food-final.csv', {
+    header: true,
+    dynamicTyping: true,
+    complete: function(results) {
+      var data = results.data;
+      for (var i = 0; i < data.length; i++) {
+        var marker = L.marker([data[i].lat, data[i].lon]).addTo(mymap);
+        // Vous pouvez personnaliser le contenu du popup en utilisant data[i].votre_colonne
+        marker.bindPopup('<b>' + data[i].Entity + '</b><br>' + data[i].Entity);
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
