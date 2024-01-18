@@ -42,6 +42,7 @@
     <div>
         <label for="dashboardSelect">Choisir un dashboard :</label>
         <select id="dashboardSelect" onchange="displayDashboard()">
+            <option value="accueil">Accueil</option>
             <option value="dashboard1">Dashboard 1</option>
             <option value="dashboard2">Dashboard 2</option>
             <option value="dashboard3">Dashboard 3</option>
@@ -57,6 +58,10 @@
             var dashboardFrame = document.getElementById("dashboardFrame");
 
             switch (selectedValue) {
+                case 'accueil':
+                    document.getElementById("message").innerHTML = "Vous êtes sur l'accueil";
+                    dashboardFrame.src = 'accueil.html'; 
+                    break;    
                 case 'dashboard1':
                     document.getElementById("message").innerHTML = "Vous êtes sur le Dashboard 1";
                     dashboardFrame.src = 'dashboard1.html'; 
