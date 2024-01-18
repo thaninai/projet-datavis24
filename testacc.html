@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page avec Choix de Dashboard</title>
-    <!-- Ajout de Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- Ajout de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,6 +17,7 @@
             color: white;
             text-align: center;
             padding: 10px;
+            margin-bottom: 20px; /* Ajout de la marge en bas pour séparer le header */
         }
         select {
             padding: 8px;
@@ -29,36 +30,23 @@
         }
         #dashboardFrame {
             width: 100%;
-            height: 600px; /* Ajustez la hauteur selon vos besoins */
+            height: 600px;
             border: none;
-        }
-        /* Ajout de styles Bootstrap */
-        .container {
-            padding: 20px;
-        }
-        .dashboard-section {
-            margin-top: 30px;
-        }
-        /* Harmonisation des titres */
-        h1, h2, h3, h4, h5, h6 {
-            margin-bottom: 20px;
-        }
-        /* Harmonisation des images */
-        img {
-            max-width: 100%;
-            height: auto;
         }
     </style>
 </head>
 <body>
-    <header class="bg-dark">
+    <!-- Utilisation des classes Bootstrap -->
+    <header class="bg-dark text-white">
         <h1>Présentation Dataset</h1>
     </header>
 
-    <div class="container">
+    <div id="message"></div>
+
+    <div class="container mt-4">
         <div class="row">
-            <div class="col-md-12">
-                <h2 class="text-center">Choisir un dashboard :</h2>
+            <div class="col-md-6 offset-md-3">
+                <label for="dashboardSelect">Choisir un dashboard :</label>
                 <select class="form-control" id="dashboardSelect" onchange="displayDashboard()">
                     <option value="accueil">Accueil</option>
                     <option value="dashboard1">Dashboard 1</option>
@@ -67,32 +55,14 @@
                 </select>
             </div>
         </div>
-
-        <div class="dashboard-section">
-            <h3 id="message" class="text-center"></h3>
-            <iframe id="dashboardFrame" src="" frameborder="0"></iframe>
-        </div>
-
-        <div class="row">
-            <div class="col-md-4">
-                <h4 class="text-center">Dashboard 1</h4>
-                <img src="dashboard1-thumbnail.jpg" alt="Dashboard 1 Preview" class="img-fluid">
-            </div>
-            <div class="col-md-4">
-                <h4 class="text-center">Dashboard 2</h4>
-                <img src="dashboard2-thumbnail.jpg" alt="Dashboard 2 Preview" class="img-fluid">
-            </div>
-            <div class="col-md-4">
-                <h4 class="text-center">Dashboard 3</h4>
-                <img src="dashboard3-thumbnail.jpg" alt="Dashboard 3 Preview" class="img-fluid">
-            </div>
-        </div>
     </div>
 
-    <!-- Ajout de Bootstrap JS et Popper.js -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <iframe id="dashboardFrame" src="" frameborder="0"></iframe>
+
+    <!-- Ajout de Bootstrap JS et Popper.js pour le bon fonctionnement des composants Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     <script>
         function displayDashboard() {
@@ -103,19 +73,19 @@
             switch (selectedValue) {
                 case 'accueil':
                     document.getElementById("message").innerHTML = "Vous êtes sur l'accueil";
-                    dashboardFrame.src = 'accueil.html'; 
-                    break;    
+                    dashboardFrame.src = 'accueil.html';
+                    break;
                 case 'dashboard1':
                     document.getElementById("message").innerHTML = "Vous êtes sur le Dashboard 1";
-                    dashboardFrame.src = 'dashboard1.html'; 
+                    dashboardFrame.src = 'dashboard1.html';
                     break;
                 case 'dashboard2':
                     document.getElementById("message").innerHTML = "Vous êtes sur le le Dashboard 2";
-                    dashboardFrame.src = 'dashboard2.html'; 
+                    dashboardFrame.src = 'dashboard2.html';
                     break;
                 case 'dashboard3':
                     document.getElementById("message").innerHTML = "Vous êtes sur le le Dashboard 3";
-                    dashboardFrame.src = 'dashboard3.html'; 
+                    dashboardFrame.src = 'dashboard3.html';
                     break;
                 default:
                     break;
