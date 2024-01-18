@@ -39,6 +39,15 @@
         .dashboard-section {
             margin-top: 30px;
         }
+        /* Harmonisation des titres */
+        h1, h2, h3, h4, h5, h6 {
+            margin-bottom: 20px;
+        }
+        /* Harmonisation des images */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
     </style>
 </head>
 <body>
@@ -48,8 +57,8 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                <h2>Choisir un dashboard :</h2>
+            <div class="col-md-12">
+                <h2 class="text-center">Choisir un dashboard :</h2>
                 <select class="form-control" id="dashboardSelect" onchange="displayDashboard()">
                     <option value="accueil">Accueil</option>
                     <option value="dashboard1">Dashboard 1</option>
@@ -57,17 +66,26 @@
                     <option value="dashboard3">Dashboard 3</option>
                 </select>
             </div>
-            <div class="col-md-6">
-                <h2>Collaborateurs :</h2>
-                <p>Thanina</p>
-                <p>Sandrine</p>
-                <p>Yassine </p>
-            </div>
         </div>
 
         <div class="dashboard-section">
-            <h3 id="message"></h3>
+            <h3 id="message" class="text-center"></h3>
             <iframe id="dashboardFrame" src="" frameborder="0"></iframe>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <h4 class="text-center">Dashboard 1</h4>
+                <img src="dashboard1-thumbnail.jpg" alt="Dashboard 1 Preview" class="img-fluid">
+            </div>
+            <div class="col-md-4">
+                <h4 class="text-center">Dashboard 2</h4>
+                <img src="dashboard2-thumbnail.jpg" alt="Dashboard 2 Preview" class="img-fluid">
+            </div>
+            <div class="col-md-4">
+                <h4 class="text-center">Dashboard 3</h4>
+                <img src="dashboard3-thumbnail.jpg" alt="Dashboard 3 Preview" class="img-fluid">
+            </div>
         </div>
     </div>
 
