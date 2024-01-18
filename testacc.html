@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page avec Choix de Dashboard</title>
+    <!-- Ajout de Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+        select {
+            padding: 8px;
+            font-size: 16px;
+        }
+        #message {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        #dashboardFrame {
+            width: 100%;
+            height: 600px; /* Ajustez la hauteur selon vos besoins */
+            border: none;
+        }
+        /* Ajout de styles Bootstrap */
+        .container {
+            padding: 20px;
+        }
+        .dashboard-section {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-dark">
+        <h1>Présentation Dataset</h1>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Choisir un dashboard :</h2>
+                <select class="form-control" id="dashboardSelect" onchange="displayDashboard()">
+                    <option value="accueil">Accueil</option>
+                    <option value="dashboard1">Dashboard 1</option>
+                    <option value="dashboard2">Dashboard 2</option>
+                    <option value="dashboard3">Dashboard 3</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <h2>Collaborateurs :</h2>
+                <p>Thanina</p>
+                <p>Sandrine</p>
+                <p>Yassine </p>
+            </div>
+        </div>
+
+        <div class="dashboard-section">
+            <h3 id="message"></h3>
+            <iframe id="dashboardFrame" src="" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <!-- Ajout de Bootstrap JS et Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script>
+        function displayDashboard() {
+            var selectElement = document.getElementById("dashboardSelect");
+            var selectedValue = selectElement.options[selectElement.selectedIndex].value;
+            var dashboardFrame = document.getElementById("dashboardFrame");
+
+            switch (selectedValue) {
+                case 'accueil':
+                    document.getElementById("message").innerHTML = "Vous êtes sur l'accueil";
+                    dashboardFrame.src = 'accueil.html'; 
+                    break;    
+                case 'dashboard1':
+                    document.getElementById("message").innerHTML = "Vous êtes sur le Dashboard 1";
+                    dashboardFrame.src = 'dashboard1.html'; 
+                    break;
+                case 'dashboard2':
+                    document.getElementById("message").innerHTML = "Vous êtes sur le le Dashboard 2";
+                    dashboardFrame.src = 'dashboard2.html'; 
+                    break;
+                case 'dashboard3':
+                    document.getElementById("message").innerHTML = "Vous êtes sur le le Dashboard 3";
+                    dashboardFrame.src = 'dashboard3.html'; 
+                    break;
+                default:
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>
