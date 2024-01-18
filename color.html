@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .pix {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+        }
+
+        img {
+            width: 5px;
+            height: 5px;
+        }
+        img:hover {
+            width: 60px;
+            height: 60px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $('document').ready(function(){
+            $.getJSON("fruitcsvjson.json", function(data){
+
+                $.each(data, function(d, i){
+
+                    var vis = '<div class="pix"'+
+                    'style="left:'+ i.rouge * 3+'px; top:'+ i.bleu * 4 +'px; background-color:rgb('+ i.rouge +','+ i.vert +','+ i.bleu +')"></div>';
+
+                    $('#page').append(vis);
+
+                })
+
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="page"></div>
+</body>
+</html>
