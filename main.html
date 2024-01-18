@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,49 +40,39 @@
     <div id="message"></div>
 
     <div>
-        <label for="dashboardSelect">Choisir une page :</label>
-        <select id="dashboardSelect" onchange="displayPage()">
-            <option value="accueil">Accueil</option>
+        <label for="dashboardSelect">Choisir un dashboard :</label>
+        <select id="dashboardSelect" onchange="displayDashboard()">
             <option value="dashboard1">Dashboard 1</option>
             <option value="dashboard2">Dashboard 2</option>
             <option value="dashboard3">Dashboard 3</option>
         </select>
     </div>
-    
 
     <iframe id="dashboardFrame" src="" frameborder="0"></iframe>
 
     <script>
-function displayPage() {
-    var selectElement = document.getElementById("dashboardSelect");
-    var selectedValue = selectElement.options[selectElement.selectedIndex].value;
-    var dashboardFrame = document.getElementById("dashboardFrame");
+        function displayDashboard() {
+            var selectElement = document.getElementById("dashboardSelect");
+            var selectedValue = selectElement.options[selectElement.selectedIndex].value;
+            var dashboardFrame = document.getElementById("dashboardFrame");
 
-    switch (selectedValue) {
-        case 'accueil':
-            document.getElementById("message").innerHTML = "Vous êtes sur la page d'accueil";
-            dashboardFrame.src = 'accueil.html'; 
-            break;
-        case 'dashboard1':
-            document.getElementById("message").innerHTML = "Vous êtes sur le Dashboard 1";
-            dashboardFrame.src = 'https://thaninai.github.io/projet-datavis24/dashboard1.html'; 
-            break;
-        case 'dashboard2':
-            document.getElementById("message").innerHTML = "Vous êtes sur le Dashboard 2";
-            dashboardFrame.src = 'dashboard2.html'; 
-            break;
-        case 'dashboard3':
-            document.getElementById("message").innerHTML = "Vous êtes sur le Dashboard 3";
-            dashboardFrame.src = 'dashboard3.html'; 
-            break;
-        default:
-            break;
-    }
-
-    // Force le rechargement de l'iframe
-    dashboardFrame.contentWindow.location.reload(true);
-}
-
+            switch (selectedValue) {
+                case 'dashboard1':
+                    document.getElementById("message").innerHTML = "Vous êtes sur le Dashboard 1";
+                    dashboardFrame.src = 'dashboard1.html'; 
+                    break;
+                case 'dashboard2':
+                    document.getElementById("message").innerHTML = "Vous êtes sur le le Dashboard 2";
+                    dashboardFrame.src = 'dashboard2.html'; 
+                    break;
+                case 'dashboard3':
+                    document.getElementById("message").innerHTML = "Vous êtes sur le le Dashboard 3";
+                    dashboardFrame.src = 'dashboard3.html'; 
+                    break;
+                default:
+                    break;
+            }
+        }
     </script>
 </body>
 </html>
