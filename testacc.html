@@ -35,12 +35,13 @@
         }
     </style>
 </head>
+ <body onload="displayDashboardOnLoad()">   
 <body>
     <!-- Utilisation des classes Bootstrap -->
     <header class="bg-dark text-white">
         <h1>Présentation Dataset</h1>
     </header>
-
+<body onload="displayDashboardOnLoad()">
     <div id="message"></div>
 
     <div class="container mt-4">
@@ -65,6 +66,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     <script>
+    function displayDashboardOnLoad() {
+            // Afficher le contenu de la page accueil.html lors du chargement initial
+            document.getElementById("message").innerHTML = "Vous êtes sur l'accueil";
+            document.getElementById("dashboardFrame").src = 'accueil.html';
+        }
+        
         function displayDashboard() {
             var selectElement = document.getElementById("dashboardSelect");
             var selectedValue = selectElement.options[selectElement.selectedIndex].value;
@@ -72,19 +79,19 @@
 
             switch (selectedValue) {
                 case 'accueil':
-                    document.getElementById("message").innerHTML = "Vous êtes sur l'accueil";
+                 //   document.getElementById("message").innerHTML = "Vous êtes sur l'accueil";
                     dashboardFrame.src = 'accueil.html';
                     break;
                 case 'dashboard1':
-                    document.getElementById("message").innerHTML = "Vous êtes sur le Dashboard 1";
+               //     document.getElementById("message").innerHTML = "Vous êtes sur le Dashboard 1";
                     dashboardFrame.src = 'dashboard1.html';
                     break;
                 case 'dashboard2':
-                    document.getElementById("message").innerHTML = "Vous êtes sur le le Dashboard 2";
+                //    document.getElementById("message").innerHTML = "Vous êtes sur le le Dashboard 2";
                     dashboardFrame.src = 'dashboard2.html';
                     break;
                 case 'dashboard3':
-                    document.getElementById("message").innerHTML = "Vous êtes sur le le Dashboard 3";
+               //     document.getElementById("message").innerHTML = "Vous êtes sur le le Dashboard 3";
                     dashboardFrame.src = 'dashboard3.html';
                     break;
                 default:
