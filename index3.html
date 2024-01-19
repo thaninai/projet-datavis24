@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Visualisation Interactive des Fruits</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        .bubble {
+            transition: all 0.5s ease;
+            border-radius: 50%;
+            cursor: move; /* Changé de 'pointer' à 'move' pour indiquer la capacité de déplacement */
+        }
+        #fruitName {
+            text-align: center;
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="fruitName">Cliquez sur un fruit pour afficher son nom.</div>
+    <div id="controls">
+        Saison: <select id="seasonSelect"></select>
+        Mois: <select id="monthSelect"></select>
+    </div>
+    <svg width="1100" height="600"></svg>
+
+    <script>
+        // JavaScript pour charger et afficher les données avec D3.js
+
+        d3.csv('fruit_saison.csv').then(function(data) {
+            // Nettoyage et préparation des données
+            data.forEach(function(d) {
+                d.imageUrl = d.image.split(' ')[0];
+            });
+
+            // Initialisation des sélecteurs
+            var seasons = ['all'].concat(Array.from(new Set(data.map(d => d.saison))));
+            var months = ['all'].concat(Array.from(new Set(data.map(d => d.mois))));
+
+            var seasonSelect = d3.select('#seasonSelect')
+                                 .on('change', updateBubbles)
+                                 .selectAll('option')
+                                 .data(seasons)
+                                 .enter().append('option')
+                                 .text(d => d);
+
+            var monthSelect = d3.select('#monthSelect')
+                                .on('change', updateBubbles)
+                                .selectAll('option')
+                                .data(months)
+                                .enter().append('option')
+                                .text(d => d);
+
+            // SVG container
+            var svg = d3.select('svg'),
+                width = +svg.attr('width'),
+                height = +svg.attr('height');
+
+            // Simulation pour les bulles
+            var simulation = d3.forceSimulation()
+                .force('charge', d3.forceManyBody().strength(5))
+                .force('center', d3.forceCenter(width / 2, height / 2))
+                .force('collision', d3.forceCollide().radius(40));
+
+            // Fonction de gestion du drag
+            var dragHandler = d3.drag()
+                .on('start', function(event, d) {
+                    if (!event.active) simulation.alphaTarget(0.3).restart();
+                    d.fx = d.x;
+                    d.fy = d.y;
+                })
+                .on('drag', function(event, d) {
+                    d.fx = event.x;
+                    d.fy = event.y;
+                })
+                .on('end', function(event, d) {
+                    if (!event.active) simulation.alphaTarget(0);
+                    d.fx = null;
+                    d.fy = null;
+                });
+
+            function updateBubbles() {
+                var selectedSeason = d3.select('#seasonSelect').node().value;
+                var selectedMonth = d3.select('#monthSelect').node().value;
+
+                var filteredData = data.filter(function(d) {
+                    return (selectedSeason === 'all' || d.saison === selectedSeason) &&
+                           (selectedMonth === 'all' || d.mois === selectedMonth);
+                });
+
+                simulation.nodes(filteredData).on('tick', ticked).restart();
+
+                var bubbles = svg.selectAll('.bubble')
+                    .data(filteredData, function(d) { return d.fruits; });
+
+                bubbles.enter().append('image')
+                    .attr('class', 'bubble')
+                    .attr('xlink:href', function(d) { return d.imageUrl; })
+                    .attr('width', 80)
+                    .attr('height', 80)
+                    .on('click', function(event, d) {
+                        d3.select('#fruitName').text(d.fruits);
+                    })
+                    .merge(bubbles)
+                    .call(dragHandler) // Appliquer le gestionnaire de drag
+                    .attr('x', function(d) { return d.x - 40; })
+                    .attr('y', function(d) { return d.y - 40; });
+
+                bubbles.exit().remove();
+            }
+
+            function ticked() {
+                svg.selectAll('.bubble')
+                    .attr('x', function(d) { return d.x - 40; })
+                    .attr('y', function(d) { return d.y - 40; });
+            }
+
+            // Mise à jour initiale des bulles
+            updateBubbles();
+        });
+
+        // Adaptation de la taille du SVG aux dimensions de la fenêtre
+
+
+        function resize() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            svg.attr('width', width).attr('height', height);
+            simulation.force('center', d3.forceCenter(width / 2, height / 2)).alpha(1).restart();
+        }
+
+        // Écouteur d'événements pour le redimensionnement de la fenêtre
+        d3.select(window).on('resize', resize);
+
+        // Appel initial pour configurer la taille
+        resize();
+    </script>
+</body>
+</html>
