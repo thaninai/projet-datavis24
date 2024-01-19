@@ -39,7 +39,7 @@
 <body>
     <!-- Utilisation des classes Bootstrap -->
     <header class="bg-dark text-white">
-        <h1>Présentation Dataset</h1>
+        <h1>Production alimentaire dans le monde</h1>
     </header>
 <body onload="displayDashboardOnLoad()">
     <div id="message"></div>
@@ -68,7 +68,6 @@
     <script>
     function displayDashboardOnLoad() {
             // Afficher le contenu de la page accueil.html lors du chargement initial
-            document.getElementById("message").innerHTML = "Vous êtes sur l'accueil";
             document.getElementById("dashboardFrame").src = 'accueil.html';
         }
         
@@ -79,19 +78,15 @@
 
             switch (selectedValue) {
                 case 'accueil':
-                 //   document.getElementById("message").innerHTML = "Vous êtes sur l'accueil";
                     dashboardFrame.src = 'accueil.html';
                     break;
                 case 'dashboard1':
-               //     document.getElementById("message").innerHTML = "Vous êtes sur le Dashboard 1";
                     dashboardFrame.src = 'dashboard1.html';
                     break;
                 case 'dashboard2':
-                //    document.getElementById("message").innerHTML = "Vous êtes sur le le Dashboard 2";
                     dashboardFrame.src = 'dashboard2.html';
                     break;
                 case 'dashboard3':
-               //     document.getElementById("message").innerHTML = "Vous êtes sur le le Dashboard 3";
                     dashboardFrame.src = 'dashboard3.html';
                     break;
                 default:
