@@ -1,27 +1,49 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>--</title>
-    
+    <title>Page Power BI</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        h1 {
+            color: #004080;
+            border-bottom: 2px solid #004080;
+            padding-bottom: 5px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        iframe, object {
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+    </style>
 </head>
 <body>
 
-    <h1>Visualisations graphique faites avec power bi</h1>
-    <iframe title="thanina" width="1440" height="900" src="https://app.powerbi.com/reportEmbed?reportId=c29de582-159a-45d8-8d55-fa2937f7e3b8&autoAuth=true&ctid=403e07f5-7dd4-467b-a843-def938b706ee" frameborder="0" allowFullScreen="true"></iframe>
+    <h1>Visualisations graphiques faites avec Power BI</h1>
+    <iframe title="thanina" width="100%" height="900" src="https://app.powerbi.com/reportEmbed?reportId=c29de582-159a-45d8-8d55-fa2937f7e3b8&autoAuth=true&ctid=403e07f5-7dd4-467b-a843-def938b706ee" frameborder="0" allowFullScreen="true"></iframe>
 
     <h1>Le top 10 des aliments les plus produits entre 2011 et 2021</h1>
+    <p>Ce graphique à barres montre la production alimentaire au cours de la décennie 2011-2021. 
+    Il y a une forte production de canne à sucre (110.4889 B). En plus de fournir du sucre, cette plante est utilisée dans l’énergie (biocarburant, combustible, etc.) mais aussi pour les cartons, les isolants, etc. Elle est donc très demandée, ce qui explique sa forte production. (source : Cirad, site du gouvernement)
+    </p>
     <iframe src="top10prod.html" width="100%" height="600px"></iframe>
-    <p>Ce graphique à barre montre la production de nourriture au cours de la décennie 2011-2021. 
-Il y a une forte production de canne à sucre (110.4889 B). En plus de fournir du sucre, cette herbe est utilisée dans l’énergie (biocarburant, combustible..) mais aussi pour les cartons, isolants ect..elle est donc convoitée, ce qui explique sa forte production. (source : Cirad, site du gouvernement)
-</p>
 
-        <h1>La production de Mais de 1960 à 2021</h1>
 
-    
-
-    <object type="image/svg+xml" data="maize-production.svg" width="60%"></object>
+    <h1>La production de maïs de 1960 à 2021</h1>
+    <object type="image/svg+xml" data="maize-production.svg" width="100%"></object>
 </body>
 </html>
