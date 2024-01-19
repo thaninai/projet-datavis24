@@ -8,10 +8,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
             margin: 0;
             padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
         }
+
         header {
             background-color: #333;
             color: white;
@@ -19,15 +23,18 @@
             padding: 10px;
             margin-bottom: 20px; /* Ajout de la marge en bas pour séparer le header */
         }
+
         select {
             padding: 8px;
             font-size: 16px;
         }
+
         #message {
             text-align: center;
             margin-top: 20px;
             font-size: 18px;
         }
+
         #dashboardFrame {
             width: 100%;
             height: 600px;
@@ -35,13 +42,12 @@
         }
     </style>
 </head>
- <body onload="displayDashboardOnLoad()">   
-<body>
+<body onload="displayDashboardOnLoad()">   
     <!-- Utilisation des classes Bootstrap -->
     <header class="bg-dark text-white">
         <h1>Production alimentaire dans le monde</h1>
     </header>
-<body onload="displayDashboardOnLoad()">
+
     <div id="message"></div>
 
     <div class="container mt-4">
@@ -66,7 +72,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     <script>
-    function displayDashboardOnLoad() {
+        function displayDashboardOnLoad() {
             // Afficher le contenu de la page accueil.html lors du chargement initial
             document.getElementById("dashboardFrame").src = 'accueil.html';
         }
